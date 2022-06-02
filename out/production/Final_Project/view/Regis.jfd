@@ -1,0 +1,103 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:14:p, par l {comp label7::l:p:28:p, comp label4::l:p:28:p, comp label3::l:p:41:p, comp label6:::p:53:p, comp label5:::p::p}, space ::31:x, par l:::p {comp tf5::l::270:x, comp tf1::l::270:x, comp tf4::l::270:x, comp tf2::l::270:x, comp passwordField1::l::270:x}, space :::p}}"
+					"$verticalGroup": "par l {seq l {space :p:16:p, par l {seq {comp tf1:::p:32:p, space s:::p, comp tf2:::p:32:p, space :p:118:p, comp tf5:::p:32:p}, seq {comp label3:::p:24:p, space :p:26:p, comp label4:::p:24:p, par l {seq {space :p:21:p, comp label5:::p:24:p}, seq {space :p:19:p, comp passwordField1:::p:34:p}}, space s:::p, par b {comp label6::b:p:24:p, comp tf4::b:p:32:p}, space :p:22:p, comp label7:::p:24:p}}, space ::34:x}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Name"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "tf1"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Email"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "tf2"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "Password"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "Adress"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "tf4"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "Note"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "tf5"
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordField1"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0, 80, 80"
+					"$rowSpecs": "0"
+					"$hGap": 5
+					"$vGap": 5
+				} ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "okButton"
+						"text": "OK"
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "cancelButton"
+						"text": "Cancel"
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "cancelButtonMouseClicked", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 0
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space ::50:x, comp label1:::p:305:p, space :p:43:p}}"
+				"$verticalGroup": "par l {seq l {space :::p, comp label1::::45:x, space :p:14:p}}"
+			} ) {
+				name: "panel1"
+				"background": new java.awt.Color( 255, 153, 0, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "HIKKYWANNAFLY REGISTER"
+					"font": new java.awt.Font( "Arial Black", 3, 18 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 445 )
+		} )
+	}
+}

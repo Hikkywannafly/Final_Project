@@ -1,0 +1,63 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par t {seq l {space :::p, comp label2:::p:89:p, space :p:18:p, comp tf1:::p:270:p}, seq l {space :p:18:p, comp regis:::p::p, space :p:241:p, par l {comp btnOk:::::x, comp radioButton1:::p:81:p}}}, space ::10:x}, seq {space :::p, comp label3:::p:89:p, space s:::p, comp tfp:::p:270:p, space :::x}, comp panel1::l:::x}"
+			"$verticalGroup": "par l {seq l {comp panel1:::p::p, space :p:12:p, par l {comp tf1:::p:32:p, comp label2::l:p:32:p}, space :p:24:p, par b {comp tfp::b:p:32:p, comp label3::b:p:32:p}, space s:::p, comp radioButton1:::p:19:p, space s:::p, par b {comp btnOk::b:p:28:p, comp regis::b:p::p}, space ::19:x}}"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 153, 153, 255, 255 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "USER NAME"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "PASSWORD"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "tf1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnOk"
+				"text": "OK"
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				"background": new java.awt.Color( 255, 153, 0, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "btnOkMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "tfp"
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton1"
+				"text": "Admin"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "regis"
+				"text": "Register"
+				"foreground": new java.awt.Color( 0, 153, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "regisMouseClicked", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space ::55:x, comp label1:::p:290:p, space :p:48:p}}"
+				"$verticalGroup": "par l {seq l {comp label1:::p:53:p, space :0:12:x}}"
+			} ) {
+				name: "panel1"
+				"background": new java.awt.Color( 255, 153, 0, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "HIKKYWANNAFLY LOGIN"
+					"font": new java.awt.Font( "Arial Black", 3, 18 )
+					"foreground": sfield java.awt.Color white
+					"background": new java.awt.Color( 102, 255, 102, 255 )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 25, 0 )
+			"size": new java.awt.Dimension( 395, 300 )
+		} )
+	}
+}

@@ -1,0 +1,220 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp panel1::l:::x, seq {space :::p, par l {seq {comp panel2:::p:405:p, space s:::p, comp panel3:::p::p, space u:::p, comp panel4:::p::p, space s:::p, comp panel5:::p::p, space ::64:x, comp label2:::p:100:p}, seq l {comp tabbedPane1:::p:954:p, space u:::p, comp panel6:::::x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {comp panel1:::p::p, space :p:7:p, par l {par l:l::p {comp panel3::t:::x, comp panel4::t:::x, comp panel5::t:::x, comp panel2::t:p::p}, seq l {space :p:19:p, comp label2:::p::p}}, space :::p, par l {comp tabbedPane1:::p:438:p, comp panel6::t:p:424:p}, space ::11:x}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				"font": new java.awt.Font( "Segoe UI", 1, 14 )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "table1"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "ID" )
+							add( "Name" )
+							add( "\tType" )
+							add( "Date created" )
+							add( "Quantity" )
+							add( "Borrow" )
+							add( "Price" )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( new com.jformdesigner.model.SwingTableColumn( null, 7, 25, 30, true ) )
+							add( null )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 3, 45, 95, true ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 0, 25, 0, true ) )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						"font": new java.awt.Font( "JetBrains Mono ExtraBold", 0, 14 )
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Book"
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane2"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "table2"
+						"font": new java.awt.Font( "Segoe UI", 0, 14 )
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "User"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space :::p, comp label4:::p:50:p, space :::p, comp label1:::p:541:p, space ::548:x, comp label3:::p::p, space :p:35:p}}"
+				"$verticalGroup": "par l {seq l {space :::p, par t {par l:t {comp label3:::p::p, comp label1::l:p::p}, seq t {comp label4:::p:40:p, space :p:3:p}}, space ::14:x}}"
+			} ) {
+				name: "panel1"
+				"background": new java.awt.Color( 255, 153, 0, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "HIKKYWANNAFLY HOME MAIN"
+					"font": new java.awt.Font( "FantasqueSansMono NF", 1, 28 )
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/exit.png" )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "label3MouseClicked", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/bookshelf (1).png" )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::x, comp textField1:::p:325:p, space :::p, comp button2:::p:53:p, space :p:42:p}}"
+				"$verticalGroup": "par l {seq {par b {comp button2::b:p::p, comp textField1::b:::x}, space :::x}}"
+			} ) {
+				name: "panel2"
+				"border": new javax.swing.border.TitledBorder( null, "Search", 2, 0, &Font0 new java.awt.Font( "Segoe UI", 0, 14 ), null )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField1"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "OK"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:24:p, comp button3:::p:73:p, space ::37:x, comp button4:::p:73:p, space :p:28:p}}"
+				"$verticalGroup": "par l {par b:l {comp button3::b:::x, comp button4::b:p::p}}"
+			} ) {
+				name: "panel3"
+				"border": new javax.swing.border.TitledBorder( null, "XML Tool", 2, 0, #Font0, null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "EXPLORE"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button4"
+					"text": "EXPORT"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:14:p, comp button6:::p:73:p, space ::45:x, comp button8:::p:73:p, space :p:25:p}}"
+				"$verticalGroup": "par l {seq l {par b {comp button6::b:p::p, comp button8::b:p::p}, space :0:0:x}}"
+			} ) {
+				name: "panel4"
+				"border": new javax.swing.border.TitledBorder( null, "Book", 2, 0, #Font0, null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button6"
+					"text": "Add new"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button6MouseClicked", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button8"
+					"text": "Delete"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::p, comp button7:::p:73:p, space ::15:x}}"
+				"$verticalGroup": "par l {seq l {comp button7:::p::p, space :0:0:x}}"
+			} ) {
+				name: "panel5"
+				"border": new javax.swing.border.TitledBorder( null, "User", 2, 0, #Font0, null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button7"
+					"text": "Create"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space ::73:x, comp button5:::p::p, space :p:68:p}, seq l {space :::p, comp textField2:::p:147:p, space :::p, comp button9:::p:55:p, space ::16:x}, comp scrollPane3::l:::x}"
+				"$verticalGroup": "par l {seq l {comp scrollPane3:::p:357:p, space :::p, par b {comp textField2::b:p::p, comp button9::b:p::p}, space :p:43:p, comp button5:::p::p, space :0:0:x}}"
+			} ) {
+				name: "panel6"
+				"border": new javax.swing.border.TitledBorder( null, "General chat", 2, 0, #Font0, null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button5"
+					"text": "Chat more"
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane3"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "textArea1"
+						"font": new java.awt.Font( "Arial", 1, 14 )
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField2"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button9"
+					"text": "Send"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/chat.png" )
+				"text": "Chat"
+				"toolTipText": "Chat"
+				"font": new java.awt.Font( "Arial Black", 1, 14 )
+				"foreground": new java.awt.Color( 255, 102, 0, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1220, 620 )
+		} )
+	}
+}
