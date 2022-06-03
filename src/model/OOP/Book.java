@@ -29,6 +29,10 @@ public class Book implements Serializable {
         this.price = price;
     }
 
+    public Book(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

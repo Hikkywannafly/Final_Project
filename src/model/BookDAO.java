@@ -63,8 +63,8 @@ public class BookDAO implements IDatabase {
         return false;
     }
 
-    public  void update(Book Book) {
-        String query = "UPDATE book SET  name = ?, type=? , quantity=?, quantity_borrow = ?,price = ? where id = " + Book.getId();
+    public void update(Book Book) {
+        String query = "UPDATE producttbl SET  name = ?, type=? , quantity=?, quantity_borrow = ?,price = ? where id = " + Book.getId();
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(query);
@@ -79,8 +79,8 @@ public class BookDAO implements IDatabase {
         }
     }
 
-    public  void delete(Book Book) {
-        String query = "delete from book where id='" + Book.getId() + "'";
+    public void delete(Book Book) {
+        String query = "delete from producttbl where id='" + Book.getId() + "'";
         try {
             Connection connection = getConnection();
             PreparedStatement pstmt = connection.prepareStatement(query);

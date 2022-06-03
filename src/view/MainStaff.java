@@ -52,6 +52,36 @@ public class MainStaff extends JFrame {
 
     }
 
+    private void button8MouseClicked() {
+        // TODO add your code here
+        int row = table1.getSelectedRow();
+
+        int ids= (int) table1.getValueAt(row, 0);
+        String name = (String) table1.getValueAt(row, 1);
+        System.out.println(ids);
+
+        try{
+            if(ids == 0 ){
+                JOptionPane.showMessageDialog(this,"There are no items to choose from");
+            }
+            else{
+                int choose= JOptionPane.showConfirmDialog(this, "Do you want to delete?" + name , "Confirm", JOptionPane.YES_NO_OPTION);
+                if(choose != JOptionPane.YES_OPTION){
+                    return;
+                }
+                else{
+                    Book book = new Book(ids);
+                    serverIMP.delete(book);
+                    pushData(serverIMP.getAll());
+                }
+            }
+        }
+        catch(Exception ex){
+
+        }
+
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         tabbedPane1 = new JTabbedPane();
@@ -109,13 +139,27 @@ public class MainStaff extends JFrame {
                     cm.getColumn(0).setMinWidth(25);
                     cm.getColumn(0).setMaxWidth(30);
                     cm.getColumn(0).setPreferredWidth(7);
-                    cm.getColumn(2).setMinWidth(45);
-                    cm.getColumn(2).setMaxWidth(95);
+                    cm.getColumn(2).setMinWidth(100);
+                    cm.getColumn(2).setMaxWidth(250);
                     cm.getColumn(2).setPreferredWidth(3);
                     cm.getColumn(3).setMinWidth(25);
+                    cm.getColumn(4).setMinWidth(45);
+                    cm.getColumn(4).setMaxWidth(60);
+                    cm.getColumn(5).setMinWidth(45);
+                    cm.getColumn(5).setMaxWidth(60);
                 }
                 table1.setFont(new Font("JetBrains Mono ExtraBold", Font.PLAIN, 14));
                 scrollPane1.setViewportView(table1);
+                table1.addMouseListener(new MouseAdapter() {
+                    public void mousePressed(MouseEvent mouseEvent) {
+                        JTable table =(JTable) mouseEvent.getSource();
+                        Point point = mouseEvent.getPoint();
+                        int row = table.rowAtPoint(point);
+                        if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
+                            // your valueChanged overridden method
+                        }
+                    }
+                });
             }
             tabbedPane1.addTab("Book", scrollPane1);
 
@@ -259,6 +303,12 @@ public class MainStaff extends JFrame {
 
             //---- button8 ----
             button8.setText("Delete");
+            button8.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    button8MouseClicked();
+                }
+            });
 
             GroupLayout panel4Layout = new GroupLayout(panel4);
             panel4.setLayout(panel4Layout);

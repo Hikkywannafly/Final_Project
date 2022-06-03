@@ -34,34 +34,43 @@ public class AddBook extends JDialog {
 
     private void okButtonMouseClicked(MouseEvent e) {
         // TODO add your code here
-        String name = textField1.getText();
-        String type = textField2.getText();
-        int quantity = Integer.parseInt(textField4.getText());
-        int borrow = 0;
-        float price = Float.parseFloat(textField5.getText());
-        if(name.isBlank() || type.isBlank() || quantity == 0 || price == 0 ){
-            JOptionPane.showMessageDialog(null,"Not allow null");
-            return;
-        }else{
-            Book book = new Book(name,type, quantity, borrow,price);
-            try{
-                if(serverIMP.insert(book)){
-                    JOptionPane.showMessageDialog(null, " Successfully!");
-                    MainStaff ms = new MainStaff();
-                    ms.setVisible(true);
-                    this.dispose();
-                    return;
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, " Failed!");
+        try{
+            String name = textField1.getText();
+            String type = comboBox1.getSelectedItem().toString();
+            int quantity = Integer.parseInt(textField4.getText());
+            int borrow = 0;
+            float price = Float.parseFloat(textField5.getText());
+            //
+            if(name.isBlank() || type.isBlank() || quantity == 0 || price == 0 ){
+                JOptionPane.showMessageDialog(null,"Not allow null");
+                return;
+            }else{
+                Book book = new Book(name,type, quantity, borrow,price);
+                try{
+                    if(serverIMP.insert(book)){
+                        JOptionPane.showMessageDialog(null, " Successfully!");
+                        MainStaff ms = new MainStaff();
+                        ms.setVisible(true);
+                        this.dispose();
+                        return;
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, " Failed!");
+
+                    }
 
                 }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, " Failed! " +  ex.getMessage());
+                }
+            }
 
-            }
-            catch(Exception ex){
-                ex.printStackTrace();
-            }
         }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, " Failed! " +  ex.getMessage());
+        }
+
 
 
     }
@@ -78,13 +87,13 @@ public class AddBook extends JDialog {
         label2 = new JLabel();
         textField1 = new JTextField();
         label3 = new JLabel();
-        textField2 = new JTextField();
         label4 = new JLabel();
         textField3 = new JTextField();
         label5 = new JLabel();
         textField4 = new JTextField();
         label6 = new JLabel();
         textField5 = new JTextField();
+        comboBox1 = new JComboBox<>();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -117,9 +126,6 @@ public class AddBook extends JDialog {
                 label3.setText("Type");
                 label3.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
-                //---- textField2 ----
-                textField2.setFont(new Font("Segoe UI", Font.BOLD, 14));
-
                 //---- label4 ----
                 label4.setText("\tDate_created");
                 label4.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -141,51 +147,67 @@ public class AddBook extends JDialog {
                 //---- textField5 ----
                 textField5.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
+                //---- comboBox1 ----
+                comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
+                    "Action and Adventure.",
+                    "Classics.",
+                    "Comic Book or Graphic Novel.",
+                    "Detective and Mystery.",
+                    "Fantasy.",
+                    "Historical Fiction.",
+                    "Horror.",
+                    "Literary Fiction."
+                }));
+
                 GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                 contentPanel.setLayout(contentPanelLayout);
                 contentPanelLayout.setHorizontalGroup(
-                        contentPanelLayout.createParallelGroup()
-                                .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(contentPanelLayout.createParallelGroup()
-                                                .addComponent(label3)
-                                                .addComponent(label2)
-                                                .addComponent(label4)
-                                                .addComponent(label5)
-                                                .addComponent(label6))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(textField1)
-                                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE))
-                                        .addGap(28, 28, 28))
+                    contentPanelLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(contentPanelLayout.createParallelGroup()
+                                .addComponent(label3)
+                                .addComponent(label2)
+                                .addComponent(label4)
+                                .addComponent(label5)
+                                .addComponent(label6))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(contentPanelLayout.createParallelGroup()
+                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                    .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(textField1)
+                                        .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE))
+                                    .addGap(28, 28, 28))
+                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                    .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 );
                 contentPanelLayout.setVerticalGroup(
-                        contentPanelLayout.createParallelGroup()
-                                .addGroup(contentPanelLayout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label2))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label3))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label4))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label5))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label6))
-                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    contentPanelLayout.createParallelGroup()
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                            .addGap(17, 17, 17)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label2))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(contentPanelLayout.createParallelGroup()
+                                .addComponent(label3)
+                                .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label4))
+                            .addGap(18, 18, 18)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label5))
+                            .addGap(18, 18, 18)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label6))
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -206,8 +228,8 @@ public class AddBook extends JDialog {
                     }
                 });
                 buttonBar.add(okButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 5, 5), 0, 0));
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 5, 5), 0, 0));
 
                 //---- cancelButton ----
                 cancelButton.setText("Cancel");
@@ -222,8 +244,8 @@ public class AddBook extends JDialog {
                     }
                 });
                 buttonBar.add(cancelButton, new GridBagConstraints(1, 0, 3, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 5, 0), 0, 0));
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 5, 0), 0, 0));
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
 
@@ -245,13 +267,13 @@ public class AddBook extends JDialog {
     private JLabel label2;
     private JTextField textField1;
     private JLabel label3;
-    private JTextField textField2;
     private JLabel label4;
     private JTextField textField3;
     private JLabel label5;
     private JTextField textField4;
     private JLabel label6;
     private JTextField textField5;
+    private JComboBox<String> comboBox1;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
