@@ -77,7 +77,7 @@ public class MainStaff extends JFrame {
             }
         }
         catch(Exception ex){
-
+            JOptionPane.showMessageDialog(this,"Failed!" + ex.getMessage());
         }
 
     }
@@ -156,7 +156,28 @@ public class MainStaff extends JFrame {
                         Point point = mouseEvent.getPoint();
                         int row = table.rowAtPoint(point);
                         if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-                            // your valueChanged overridden method
+
+                            EditBook ed = new EditBook();
+                            ed.setVisible(true);
+                            System.out.println("hello kk");
+                            int row1 = table1.getSelectedRow();
+                            int ids= (int) table1.getValueAt(row1, 0);
+                            String name = String.valueOf(table1.getValueAt(row1, 1));
+                            String type = String.valueOf(table1.getValueAt(row1, 2));
+                            String date = String.valueOf(table1.getValueAt(row1, 3));
+                            int quantity = (int) table1.getValueAt(row1, 4);
+                            int borrow = (int) table1.getValueAt(row1, 5);
+                            float price = (float) table1.getValueAt(row1, 6);
+
+                            ed.comboBox1.setSelectedItem(type);
+                            ed.textField1.setText(name);
+                            ed.textField3.setText(date);
+                            ed.textField3.setEnabled(false);
+                            ed.textField4.setText(String.valueOf(quantity));
+                            ed.textField5.setText(String.valueOf(borrow));
+                            ed.textField6.setText(String.valueOf(price));
+                            dispose();
+
                         }
                     }
                 });
@@ -464,7 +485,7 @@ public class MainStaff extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JTabbedPane tabbedPane1;
     private JScrollPane scrollPane1;
-    private JTable table1;
+    public JTable table1;
     private JScrollPane scrollPane2;
     private JTable table2;
     private JPanel panel1;

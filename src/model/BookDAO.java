@@ -58,12 +58,12 @@ public class BookDAO implements IDatabase {
             ps.executeUpdate();
             return true;
         } catch (Exception ex) {
-
+            JOptionPane.showMessageDialog(null,"Insert" + ex.getMessage());
         }
         return false;
     }
 
-    public void update(Book Book) {
+    public boolean update(Book Book) {
         String query = "UPDATE producttbl SET  name = ?, type=? , quantity=?, quantity_borrow = ?,price = ? where id = " + Book.getId();
         try {
             Connection connection = getConnection();
@@ -74,9 +74,11 @@ public class BookDAO implements IDatabase {
             ps.setInt(4, Book.getQuantity_borrow());
             ps.setFloat(5, Book.getPrice());
             ps.executeUpdate();
+            return true;
         } catch (Exception ex) {
-
+            JOptionPane.showMessageDialog(null,"MSQL Update" + ex.getMessage());
         }
+        return false;
     }
 
     public void delete(Book Book) {

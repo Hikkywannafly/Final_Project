@@ -42,8 +42,8 @@ public class SeverIMP extends UnicastRemoteObject implements IServer{
     }
 
     @Override
-    public void update(Book Book) throws RemoteException {
-        bookDAO.update(Book);
+    public boolean update(Book Book) throws RemoteException {
+        return bookDAO.update(Book);
     }
 
 

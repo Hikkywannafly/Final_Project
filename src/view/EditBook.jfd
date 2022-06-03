@@ -10,13 +10,13 @@ new FormModel {
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				"background": new java.awt.Color( 255, 153, 0, 255 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :::p, comp contentPanel2:::p:404:p, space ::29:x}}"
-					"$verticalGroup": "par l {seq l {space :::p, comp contentPanel2:::::x}}"
+					"$horizontalGroup": "par l {seq t {space :::x, comp contentPanel2:::p:404:p, space :::p}}"
+					"$verticalGroup": "par l {seq l {comp contentPanel2:::p::p, space :0:6:x}}"
 				} ) {
 					name: "contentPanel"
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq t {space :::p, par l {comp label3::l:p::p, comp label2::l:p::p, comp label4::l:p::p, comp label5::l:p::p, comp label6::l:p::p}, space :::x, par t {comp textField2::t:p:285:p, comp textField1::t:::x, comp textField5::t:p:285:p, comp textField4::t:p:285:p, comp textField3::t:p:285:p}, space :p:28:p}}"
-						"$verticalGroup": "par l {seq {space :p:17:p, par b {comp textField1::b:p:40:p, comp label2::b:p::p}, space u:::p, par b {comp textField2::b:p:40:p, comp label3::b:p::p}, space u:::p, par b {comp textField3::b:p:40:p, comp label4::b:p::p}, space s:::p, par b {comp textField4::b:p:40:p, comp label5::b:p::p}, space s:::p, par b {comp textField5::b:p:40:p, comp label6::b:p::p}, space ::46:x}}"
+						"$horizontalGroup": "par l {seq {space :::p, par l {seq {par l {seq {comp label7:::p::p, space :::x, comp textField6:::p:285:p}, seq l {par l {comp label3::l:p::p, comp label4::l:p::p, comp label5::l:p::p}, space :::x, par t {comp textField4::t:p:285:p, comp textField3::t:p:285:p, comp comboBox1::l:p::p, comp textField1::l:::x}}, seq t {comp label6:::p::p, space :::x, comp textField5:::p:285:p}}, space :p:28:p}, seq l {comp label2:::p::p, space :::x}}}}"
+						"$verticalGroup": "par l {seq {space ::23:x, par b {comp label2::b:p::p, comp textField1::b:p:40:p}, space :::p, par b {comp label3::b:p::p, comp comboBox1::b:p::p}, space u:::p, par b {comp textField3::b:p:40:p, comp label4::b:p::p}, space s:::p, par b {comp textField4::b:p:40:p, comp label5::b:p::p}, space :p:18:p, par b {comp label7::b:p::p, comp textField6::b:p:40:p}, space :p:16:p, par b {comp label6::b:p::p, comp textField5::b:p:40:p}}}"
 					} ) {
 						name: "contentPanel2"
 						"foreground": new java.awt.Color( 255, 255, 255, 255 )
@@ -28,15 +28,14 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField1"
 							"font": &Font1 new java.awt.Font( "Segoe UI", 1, 14 )
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label3"
 							"text": "Type"
 							"font": #Font0
-						} )
-						add( new FormComponent( "javax.swing.JTextField" ) {
-							name: "textField2"
-							"font": #Font1
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label4"
@@ -46,6 +45,9 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField3"
 							"font": #Font1
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label5"
@@ -55,6 +57,9 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField4"
 							"font": #Font1
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label6"
@@ -64,13 +69,46 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField5"
 							"font": #Font1
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox1"
+							"model": new javax.swing.DefaultComboBoxModel {
+								selectedItem: "Action and Adventure."
+								addElement( "Action and Adventure." )
+								addElement( "Classics." )
+								addElement( "Comic Book or Graphic Novel." )
+								addElement( "Detective and Mystery." )
+								addElement( "Fantasy." )
+								addElement( "Historical Fiction." )
+								addElement( "Horror." )
+								addElement( "Literary Fiction." )
+							}
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label7"
+							"text": "Borrow"
+							"font": #Font0
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField6"
+							"font": #Font1
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-					"$columnSpecs": "0:1.0, 80, 80"
+					"$columnSpecs": "0:1.0, 80, 0, 0, 80"
 					"$rowSpecs": "0"
 					"$hGap": 5
 					"$vGap": 5
@@ -80,16 +118,18 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton"
 						"text": "OK"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-						"gridx": 1
-						"gridy": 0
-					} )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 1
+						}
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "okButtonMouseClicked", false ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "cancelButton"
 						"text": "Cancel"
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "cancelButtonMouseClicked", false ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-						"gridx": 2
-						"gridy": 0
+						"gridx": 1
+						"gridwidth": 4
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"

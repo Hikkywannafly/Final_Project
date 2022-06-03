@@ -12,7 +12,7 @@ public interface IServer extends Remote {
    public boolean checkRegister(Account Account) throws RemoteException;
    public  List<Book> getAll() throws RemoteException;
    public  boolean insert(Book Book) throws RemoteException;
-   public  void update(Book Book) throws RemoteException;
+   public  boolean update(Book Book) throws RemoteException;
    public  void delete(Book Book) throws RemoteException;
    public String text(String text) throws RemoteException;
    public int dataa() throws RemoteException;
