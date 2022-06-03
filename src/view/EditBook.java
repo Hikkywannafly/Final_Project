@@ -4,6 +4,7 @@
 
 package view;
 
+import model.BookDAO;
 import model.OOP.Book;
 import server.rmi.IServer;
 
@@ -21,6 +22,7 @@ import javax.swing.border.*;
 public class EditBook extends JDialog {
     String serviceName = "rmi://localhost:3308/test";
     IServer serverIMP;
+    int id;
     public EditBook() {
         try {
             serverIMP = (IServer) Naming.lookup(serviceName);
@@ -42,19 +44,20 @@ public class EditBook extends JDialog {
     private void okButtonMouseClicked() {
         // TODO add your code here
         try{
+            System.out.println(id);
             String name = textField1.getText();
             String type = comboBox1.getSelectedItem().toString();
             int quantity = Integer.parseInt(textField4.getText());
-            int borrow = Integer.parseInt(textField5.getText()) ;
-            float price = Float.parseFloat(textField6.getText());
+            int borrow = Integer.parseInt(textField6.getText()) ;
+            float price = Float.parseFloat(textField5.getText());
             //
             if(name.isBlank() || type.isBlank() || quantity == 0 || price == 0 ){
                 JOptionPane.showMessageDialog(null,"Not allow null");
                 return;
             }else{
-                Book book = new Book(name,type, quantity, borrow,price);
+                Book book = new Book(id,name,type, quantity, borrow,price);
                 try{
-                    if(serverIMP.insert(book)){
+                    if(serverIMP.update(book)){
                         JOptionPane.showMessageDialog(null, " Successfully!");
                         MainStaff ms = new MainStaff();
                         ms.setVisible(true);
@@ -247,7 +250,7 @@ public class EditBook extends JDialog {
                     contentPanelLayout.createParallelGroup()
                         .addGroup(contentPanelLayout.createSequentialGroup()
                             .addComponent(contentPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 6, Short.MAX_VALUE))
+                            .addGap(0, 0, Short.MAX_VALUE))
                 );
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -269,7 +272,7 @@ public class EditBook extends JDialog {
                 });
                 buttonBar.add(okButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 5), 0, 0));
+                    new Insets(0, 0, 5, 5), 0, 0));
 
                 //---- cancelButton ----
                 cancelButton.setText("Cancel");
@@ -285,7 +288,7 @@ public class EditBook extends JDialog {
                 });
                 buttonBar.add(cancelButton, new GridBagConstraints(1, 0, 4, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                    new Insets(0, 0, 5, 0), 0, 0));
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
 

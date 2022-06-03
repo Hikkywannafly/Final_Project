@@ -3,6 +3,8 @@ package server.rmi;
 import model.OOP.Account;
 import model.OOP.Book;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -16,4 +18,5 @@ public interface IServer extends Remote {
    public  void delete(Book Book) throws RemoteException;
    public String text(String text) throws RemoteException;
    public int dataa() throws RemoteException;
+   public  void createXML(List<Book> BL) throws RemoteException, ParserConfigurationException, TransformerException;
 }

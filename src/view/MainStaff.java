@@ -14,9 +14,12 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
 import javax.swing.table.*;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import model.BookDAO;
 import model.OOP.Book;
+import model.XMLController;
 import server.rmi.IServer;
 
 /**
@@ -40,6 +43,27 @@ public class MainStaff extends JFrame {
         Login l = new Login();
         l.setVisible(true);
         this.dispose();
+    }
+
+    private void button4MouseClicked(MouseEvent e) throws RemoteException, ParserConfigurationException, TransformerException {
+        System.out.println("da an");
+
+        int choose= JOptionPane.showConfirmDialog(this, "Do you want to explore"  , "Confirm", JOptionPane.YES_NO_OPTION);
+        if(choose != JOptionPane.YES_OPTION){
+
+            return;
+        }
+        else{
+            try{
+                serverIMP.createXML(serverIMP.getAll());
+                System.out.println("co chay");
+                JOptionPane.showMessageDialog(null,"Successful");
+            }
+            catch (Exception ex){
+                JOptionPane.showMessageDialog(this,"Error: "+ ex.getMessage());
+            }
+
+        }
     }
 
     private void button6MouseClicked(MouseEvent e) throws RemoteException {
@@ -168,14 +192,15 @@ public class MainStaff extends JFrame {
                             int quantity = (int) table1.getValueAt(row1, 4);
                             int borrow = (int) table1.getValueAt(row1, 5);
                             float price = (float) table1.getValueAt(row1, 6);
-
+                            System.out.println(price);
+                            ed.id = ids;
                             ed.comboBox1.setSelectedItem(type);
                             ed.textField1.setText(name);
                             ed.textField3.setText(date);
                             ed.textField3.setEnabled(false);
                             ed.textField4.setText(String.valueOf(quantity));
-                            ed.textField5.setText(String.valueOf(borrow));
-                            ed.textField6.setText(String.valueOf(price));
+                            ed.textField6.setText(String.valueOf(borrow));
+                            ed.textField5.setText(String.valueOf(price));
                             dispose();
 
                         }
@@ -283,7 +308,20 @@ public class MainStaff extends JFrame {
 
             //---- button4 ----
             button4.setText("EXPORT");
-
+            button4.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    try {
+                        button4MouseClicked(e);
+                    } catch (RemoteException ex) {
+                        ex.printStackTrace();
+                    } catch (ParserConfigurationException ex) {
+                        ex.printStackTrace();
+                    } catch (TransformerException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
             GroupLayout panel3Layout = new GroupLayout(panel3);
             panel3.setLayout(panel3Layout);
             panel3Layout.setHorizontalGroup(

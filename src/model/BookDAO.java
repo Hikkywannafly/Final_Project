@@ -64,7 +64,7 @@ public class BookDAO implements IDatabase {
     }
 
     public boolean update(Book Book) {
-        String query = "UPDATE producttbl SET  name = ?, type=? , quantity=?, quantity_borrow = ?,price = ? where id = " + Book.getId();
+        String query = "UPDATE producttbl SET  name = ?, type=? , quantity=?, quantity_borrow = ?,price = ? where id = '" + Book.getId() +"'";
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(query);

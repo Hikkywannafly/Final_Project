@@ -11,7 +11,7 @@ new FormModel {
 				"background": new java.awt.Color( 255, 153, 0, 255 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq t {space :::x, comp contentPanel2:::p:404:p, space :::p}}"
-					"$verticalGroup": "par l {seq l {comp contentPanel2:::p::p, space :0:6:x}}"
+					"$verticalGroup": "par l {seq l {comp contentPanel2:::p::p, space :0:0:x}}"
 				} ) {
 					name: "contentPanel"
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -109,7 +109,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 					"$columnSpecs": "0:1.0, 80, 0, 0, 80"
-					"$rowSpecs": "0"
+					"$rowSpecs": "0, 0"
 					"$hGap": 5
 					"$vGap": 5
 				} ) {
@@ -147,7 +147,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 430, 450 )
+			"size": new java.awt.Dimension( 430, 490 )
 		} )
 	}
 }

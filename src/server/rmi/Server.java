@@ -19,11 +19,7 @@ public class Server {
             LocateRegistry.createRegistry(3308);
             Naming.bind(serviceName, serverIMP);
             System.out.println("Service is running");
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (AlreadyBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
+        } catch (RemoteException | AlreadyBoundException | MalformedURLException e) {
             e.printStackTrace();
         }
     }
