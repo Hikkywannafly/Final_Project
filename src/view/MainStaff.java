@@ -47,6 +47,8 @@ public class MainStaff extends JFrame {
         AddBook ab = new AddBook();
         pushData(serverIMP.getAll());
         ab.setVisible(true);
+        this.dispose();
+
 
     }
 

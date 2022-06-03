@@ -11,6 +11,7 @@ import server.rmi.IServer;
 
 import java.awt.*;
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -46,6 +47,9 @@ public class AddBook extends JDialog {
             try{
                 if(serverIMP.insert(book)){
                     JOptionPane.showMessageDialog(null, " Successfully!");
+                    MainStaff ms = new MainStaff();
+                    ms.setVisible(true);
+                    this.dispose();
                     return;
                 }
                 else{
@@ -61,7 +65,12 @@ public class AddBook extends JDialog {
 
 
     }
-
+    private void cancelButtonMouseClicked() throws RemoteException {
+        // TODO add your code here
+        MainStaff ms = new MainStaff();
+        ms.setVisible(true);
+        this.dispose();
+    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         dialogPane = new JPanel();
@@ -135,48 +144,48 @@ public class AddBook extends JDialog {
                 GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                 contentPanel.setLayout(contentPanelLayout);
                 contentPanelLayout.setHorizontalGroup(
-                    contentPanelLayout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(contentPanelLayout.createParallelGroup()
-                                .addComponent(label3)
-                                .addComponent(label2)
-                                .addComponent(label4)
-                                .addComponent(label5)
-                                .addComponent(label6))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textField1)
-                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE))
-                            .addGap(28, 28, 28))
+                        contentPanelLayout.createParallelGroup()
+                                .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(contentPanelLayout.createParallelGroup()
+                                                .addComponent(label3)
+                                                .addComponent(label2)
+                                                .addComponent(label4)
+                                                .addComponent(label5)
+                                                .addComponent(label6))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(textField1)
+                                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28))
                 );
                 contentPanelLayout.setVerticalGroup(
-                    contentPanelLayout.createParallelGroup()
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                            .addGap(17, 17, 17)
-                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label2))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label3))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label4))
-                            .addGap(18, 18, 18)
-                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label5))
-                            .addGap(18, 18, 18)
-                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label6))
-                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        contentPanelLayout.createParallelGroup()
+                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label2))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label3))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label4))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label5))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label6))
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -197,14 +206,24 @@ public class AddBook extends JDialog {
                     }
                 });
                 buttonBar.add(okButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 5, 5), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 5, 5), 0, 0));
 
                 //---- cancelButton ----
                 cancelButton.setText("Cancel");
+                cancelButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        try {
+                            cancelButtonMouseClicked();
+                        } catch (RemoteException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
                 buttonBar.add(cancelButton, new GridBagConstraints(1, 0, 3, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 5, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 5, 0), 0, 0));
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
 
