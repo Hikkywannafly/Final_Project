@@ -45,6 +45,13 @@ public class MainStaff extends JFrame {
         this.dispose();
     }
 
+    private void button3MouseClicked(MouseEvent e)  {
+        // TODO add your code here
+        XMLView xml = new XMLView();
+        xml.setVisible(true);
+        System.out.println("Hello_Ne");
+    }
+
     private void button4MouseClicked(MouseEvent e) throws RemoteException, ParserConfigurationException, TransformerException {
         System.out.println("da an");
 
@@ -305,7 +312,13 @@ public class MainStaff extends JFrame {
 
             //---- button3 ----
             button3.setText("EXPLORE");
-
+//            button3MouseClicked
+            button3.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    button3MouseClicked(e);
+                }
+            });
             //---- button4 ----
             button4.setText("EXPORT");
             button4.addMouseListener(new MouseAdapter() {

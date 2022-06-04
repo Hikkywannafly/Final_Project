@@ -78,5 +78,9 @@ public class XMLController {
         StreamResult result = new StreamResult(f);
         transformer.transform(source, result);
     }
+
+    public void readXMl(){
+
+    }
 }
 
