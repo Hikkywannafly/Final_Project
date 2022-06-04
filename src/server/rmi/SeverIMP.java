@@ -73,4 +73,9 @@ public class SeverIMP extends UnicastRemoteObject implements IServer{
 
     }
 
+    @Override
+    public List<Book> readXMl(String file) throws RemoteException {
+        return xml.readXMl(file);
+    }
+
 }

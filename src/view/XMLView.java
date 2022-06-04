@@ -4,19 +4,33 @@
 
 package view;
 
+import model.OOP.Book;
+import model.XMLController;
+import server.rmi.IServer;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.Naming;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author unknown
  */
 public class XMLView extends JDialog {
+    String serviceName = "rmi://localhost:3308/test";
+    IServer serverIMP;
     public XMLView() {
-
+        try {
+            serverIMP = (IServer) Naming.lookup(serviceName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         initComponents();
     }
     private void button1MouseClicked(MouseEvent e)  {
@@ -29,6 +43,20 @@ public class XMLView extends JDialog {
                 fileaddress = fd.getDirectory();
                 this.setTitle(filename);
                 if(filename.endsWith(".xml")){
+                    table1.setModel(new DefaultTableModel(
+                            new Object[][] {
+                                    {null, null, null, null, null, null, null},
+                                    {null, null, null, null, null, null, null},
+                                    {null, null, null, null, null, null, null},
+                                    {null, null, null, null, null, null, null},
+                            },
+                            new String[] {
+                                    "ID", "Name", "\tType", "Date created", "Quantity", "Borrow", "Price"
+                            }
+                    ));
+                    System.out.println(filename);
+                    System.out.println(fileaddress);
+                    pushData(serverIMP.readXMl("C://Users//Hiki_ne//Desktop//"+filename));
                     scrollPane1.setViewportView(table1);
                     System.out.println("Successfully");
                     
@@ -50,6 +78,9 @@ public class XMLView extends JDialog {
 
     }
 
+        private void okButtonMouseClicked(MouseEvent e){
+        this.dispose();
+        }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         dialogPane = new JPanel();
@@ -123,6 +154,12 @@ public class XMLView extends JDialog {
 
                 //---- okButton ----
                 okButton.setText("Cancel");
+                okButton.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        okButtonMouseClicked(e);
+                    }
+                });
                 buttonBar.add(okButton, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
@@ -148,4 +185,19 @@ public class XMLView extends JDialog {
     String filename;
     String fileaddress;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    public void  pushData (java.util.List<Book> BL){
+        List<Book> BookList = new ArrayList<>();
+        BookList = BL;
+        DefaultTableModel model;
+        table1.getModel();
+        model = (DefaultTableModel) table1.getModel();
+        model.setRowCount(0);
+        BookList.forEach(book ->{
+            model.addRow(new Object [] {
+                    book.getId(),book.getName(),book.getType(),book.getDate_created(),book.getQuantity(),book.getQuantity_borrow()
+                    ,book.getPrice()
+            });
+        });
+
+    }
 }

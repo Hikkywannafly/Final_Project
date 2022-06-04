@@ -1,9 +1,8 @@
 package model;
 
 import model.OOP.Book;
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,6 +13,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +51,8 @@ public class XMLController {
             student.appendChild(date);
 
             Element quantity = doc.createElement("Quantity");
-            name.appendChild(doc.createTextNode(String.valueOf(book.getQuantity())));
-            student.appendChild(name);
+            quantity.appendChild(doc.createTextNode(String.valueOf(book.getQuantity())));
+            student.appendChild(quantity);
 
             Element quantity_borrow = doc.createElement("Borrow");
             quantity_borrow.appendChild(doc.createTextNode(String.valueOf(book.getQuantity_borrow())));
@@ -79,8 +79,51 @@ public class XMLController {
         transformer.transform(source, result);
     }
 
-    public void readXMl(){
+    public  List<Book> readXMl(String file){
+        List<Book> bookList = new ArrayList<>();
+        File input = new File(file);
 
+
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuider = dbFactory.newDocumentBuilder();
+            Document doc = dBuider.parse(input);
+            doc.getDocumentElement().getNodeName();
+            NodeList nodeListBook = doc.getElementsByTagName("Book");
+            for (int i = 0; i < nodeListBook.getLength(); i++) {
+                Book book = new Book();
+                Node nNode = nodeListBook.item(i);
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    book.setId(Integer.parseInt(eElement.getElementsByTagName("Id")
+                            .item(0).getTextContent()));
+                    book.setName((eElement.getElementsByTagName("Name")
+                            .item(0).getTextContent()));
+                    book.setType((eElement.getElementsByTagName("Type")
+                            .item(0).getTextContent()));
+                    book.setDate_created((eElement.getElementsByTagName("Date")
+                            .item(0).getTextContent()));
+                    book.setQuantity(Integer.parseInt(eElement.getElementsByTagName("Quantity")
+                            .item(0).getTextContent()));
+                    book.setQuantity_borrow(Integer.parseInt(eElement.getElementsByTagName("Borrow")
+                            .item(0).getTextContent()));
+                    book.setPrice(Float.parseFloat(eElement.getElementsByTagName("Id")
+                            .item(0).getTextContent()));
+
+                }
+
+                bookList.add(book);
+            }
+
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+            return bookList;
     }
 }
 

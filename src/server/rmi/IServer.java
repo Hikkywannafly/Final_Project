@@ -19,4 +19,5 @@ public interface IServer extends Remote {
    public String text(String text) throws RemoteException;
    public int dataa() throws RemoteException;
    public  void createXML(List<Book> BL) throws RemoteException, ParserConfigurationException, TransformerException;
+   public  List<Book> readXMl(String file) throws RemoteException;
 }
