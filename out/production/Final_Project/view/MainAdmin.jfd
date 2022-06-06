@@ -1,0 +1,94 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.13" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp panel1::l:::x, seq l {space :p:14:p, par l:::p {seq l {par t:::p {seq {comp button1:::p:47:p, space :::p, comp button2:::p:41:p, space :::p, comp comboBox1:::p:84:p, space :::p, comp textField2:::::x}, comp textField1:::p:265:p}, space :::p, comp label2:::::x}, comp panel2:::p::p}, space s:::p, par l {seq l {space :p:22:p, comp button3:::p::p, space :p:27:p, comp button4:::p::p, space :p:33:p, comp button5:::p::p}, comp scrollPane2:::p:351:p}, space ::30:x}}"
+			"$verticalGroup": "par l {seq l {comp panel1:::p::p, space s:::p, par l:::p {comp panel2:::::x, comp scrollPane2::::383:x}, par l {seq {space :::p, comp textField1:::p:38:p, space :::p, par b {comp button1::b:p::p, comp button2::b:p::p, comp textField2::b::33:x, comp comboBox1::b:p::p}, space :::p}, seq t {space ::48:x, par b {comp button5::b:p::p, comp button3::b:p::p, comp button4::b:p::p}, space :p:26:p}, seq l {space :p:9:p, comp label2::::89:x, space :::p}}}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:57:p, comp label1:::p:485:p, space :::x}}"
+				"$verticalGroup": "par l {seq t {space ::15:x, comp label1:::p::p, space :::p}}"
+			} ) {
+				name: "panel1"
+				"background": new java.awt.Color( 255, 153, 0, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "HIKKYWANNAFLY ADMINSTRATOR"
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"font": new java.awt.Font( "Arial Black", 3, 22 )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space :::p, comp scrollPane1::::288:x, space :::p}}"
+				"$verticalGroup": "par l {seq {space :::p, comp scrollPane1::::332:x, space :p:17:p}}"
+			} ) {
+				name: "panel2"
+				"border": new javax.swing.border.TitledBorder( null, "Server", 4, 1, new java.awt.Font( "Segoe UI Black", 2, 14 ), sfield java.awt.Color pink )
+				"foreground": new java.awt.Color( 102, 0, 0, 255 )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "textArea1"
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons8-email-send-35.png" )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "B"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 14 )
+				"foreground": &Color0 new java.awt.Color( 0, 0, 0, 255 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", false ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "I"
+				"font": new java.awt.Font( "Segoe UI Black", 2, 14 )
+				"foreground": #Color0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button2MouseClicked", false ) )
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox1"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "RED"
+					addElement( "RED" )
+					addElement( "BLUE" )
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				"viewportBorder": new javax.swing.border.TitledBorder( null, "Working", 4, 1, new java.awt.Font( "Segoe UI Black", 3, 14 ), sfield java.awt.Color green )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "INFO"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", false ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Config"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button4MouseClicked", false ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button5"
+				"text": "About"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button5MouseClicked", false ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 725, 590 )
+		} )
+	}
+}

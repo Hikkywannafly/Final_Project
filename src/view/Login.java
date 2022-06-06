@@ -7,11 +7,18 @@ package view;
 import model.AccountDAO;
 import model.Encryption;
 import model.OOP.Account;
+import model.OOP.Peer;
 import server.rmi.IServer;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.rmi.Naming;
+import java.util.Random;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -19,6 +26,8 @@ import javax.swing.GroupLayout;
  * @author hikkywannafly
  */
 public class Login extends JFrame {
+    String nameAccount;
+    static int portServer = 8080;
     String serviceName = "rmi://localhost:3308/test";
     IServer serverIMP;
     Encryption encryption;
@@ -53,8 +62,11 @@ public class Login extends JFrame {
             }
             System.out.println(serverIMP.checkLogin(account));
             if(serverIMP.checkLogin(account)){
-                MainStaff ms = new MainStaff();
-                ms.setVisible(true);
+                nameAccount = tf1.getText();
+                serverChat();
+//                MainStaff ms = new MainStaff();
+//                ms.setVisible(true);
+
                 this.dispose();
 
             }
@@ -195,6 +207,37 @@ public class Login extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+    public void serverChat(){
+        try {
+            Random rd = new Random();
+            int portPeer = 10000 + rd.nextInt() % 1000;
+
+            InetAddress ipServer = InetAddress.getByName(Inet4Address.getLocalHost().getHostAddress());
+            System.out.println("Ip server : " + ipServer );
+            String IPClient = String.valueOf(ipServer);
+            Socket socketClient = new Socket(ipServer, portServer);
+            String name = nameAccount;
+            Peer p = new Peer(name, portPeer);
+            System.out.println("hello 0 " + p.getName() + p.getPort());
+            ObjectOutputStream serverOutputStream = new ObjectOutputStream(socketClient.getOutputStream());
+            serverOutputStream.writeObject(p);
+
+            serverOutputStream.flush();
+            ObjectInputStream serverInputStream = new ObjectInputStream(socketClient.getInputStream());
+
+            socketClient.close();
+
+
+            System.out.println("Port Server Login: " + portServer);
+            System.out.println("Port Client Login: " + portPeer ) ;
+            new MainStaff(IPClient, portPeer, nameAccount, portServer);
+
+        } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Some Thing Error");
+            ex.printStackTrace();
+        }
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

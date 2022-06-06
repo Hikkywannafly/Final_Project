@@ -6,10 +6,12 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -17,15 +19,19 @@ import javax.swing.table.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import model.BookDAO;
+
 import model.OOP.Book;
-import model.XMLController;
+
 import server.rmi.IServer;
 
 /**
  * @author Hikkywannafly
  */
 public class MainStaff extends JFrame {
+    private static String IPClient = "", nameUser = "", dataUser = "";
+    private static int portClient = 0;
+    private static JList<String> listActive;
+    private static int portServer;
     String serviceName = "rmi://localhost:3308/test";
     IServer serverIMP;
     public MainStaff() throws RemoteException {
@@ -37,7 +43,32 @@ public class MainStaff extends JFrame {
         initComponents();
         pushData(serverIMP.getAll());
     }
+        public MainStaff(String arg, int arg1, String name, int port_Server){
+            IPClient = arg;
+            portClient = arg1;
+            nameUser = name;
+            portServer = port_Server;
+            System.out.println("Port Server Main UI: " + portServer);
 
+            EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        MainStaff frame = new MainStaff();
+                        frame.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
+    private void label2MouseClicked(MouseEvent e)  {
+        // TODO add your code here
+        XMLView xml = new XMLView();
+        xml.setVisible(true);
+        System.out.println("Hello_Ne");
+    }
     private void label3MouseClicked(MouseEvent e) {
         // TODO add your code here
         Login l = new Login();
@@ -110,6 +141,11 @@ public class MainStaff extends JFrame {
         catch(Exception ex){
             JOptionPane.showMessageDialog(this,"Failed!" + ex.getMessage());
         }
+
+    }
+    private void button9MouseClicked() {
+        // TODO add your code here
+
 
     }
 
@@ -381,6 +417,12 @@ public class MainStaff extends JFrame {
                     button8MouseClicked();
                 }
             });
+            button9.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    button9MouseClicked();
+                }
+            });
 
             GroupLayout panel4Layout = new GroupLayout(panel4);
             panel4.setLayout(panel4Layout);
@@ -483,7 +525,12 @@ public class MainStaff extends JFrame {
         label2.setToolTipText("Chat");
         label2.setFont(new Font("Arial Black", Font.BOLD, 14));
         label2.setForeground(new Color(255, 102, 0));
-
+        label2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                    label2MouseClicked(e);
+            }
+        });
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -577,9 +624,17 @@ public class MainStaff extends JFrame {
         });
 
     }
-
-    public static void main(String[] args) throws RemoteException {
-        MainStaff ms = new MainStaff();
-        ms.setVisible(true);
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    MainStaff ms = new MainStaff();
+                    ms.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
